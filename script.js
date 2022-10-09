@@ -39,7 +39,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game() {
+function playGame() {
 
     player = 0
     computer = 0
@@ -70,6 +70,6 @@ function game() {
 
 }
 
-game();
+playGame();
 
 
