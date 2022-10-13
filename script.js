@@ -16,60 +16,120 @@ function getComputerChoice() {
 
 
 
+
+
+// function playGame() {
+
+//     player = 0
+//     computer = 0
+//     tie = 0
+
+//     for (let i = 0; i < 5; i++) {
+
+//         computerSelection = getComputerChoice();
+//         playerSelection = prompt("Choose your weapon: Rock, Paper or Scissors:").toLowerCase();
+
+//         winner = playRound(playerSelection, computerSelection);
+
+// if (winner === "computer") {
+//     console.log(`Player picked ${playerSelection}. Computer picked ${computerSelection}. Computer wins - ${computerSelection} beats ${playerSelection}`);
+//     computer++;
+//     console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
+// } else if (winner === "player") {
+//     console.log(`Player picked ${playerSelection}. Computer picked ${computerSelection}. Player wins - ${playerSelection} beats ${computerSelection}`);
+//     player++;
+//     console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
+// } else {
+//     console.log(`Player picked ${playerSelection}.Computer picked ${computerSelection}.Tie - you both picked ${computerSelection}`);
+//     tie++;
+//     console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
+// }
+
+//     }
+
+// }
+
+// playGame();
+
+
+
+let player = 0
+let computer = 0
+let tie = 0
+
+const container = document.querySelector("div.container")
+
+const results = document.createElement("h3");
+
+
+
 function playRound(playerSelection, computerSelection) {
 
     if (playerSelection === "rock" && computerSelection === "rock") {
-        return ("tie");
+        results.textContent = `Tie - you both picked ${computerSelection}`;
+        // return ("tie");
     } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return ("player");
+        results.textContent = `Player picked ${playerSelection}. Computer picked ${computerSelection}. 
+        Player wins - ${playerSelection} beats ${computerSelection}`
+        // return ("player");
     } else if (playerSelection === "scissors" && computerSelection === "rock") {
-        return ("computer");
+        results.textContent = `Player picked ${playerSelection}. Computer picked ${computerSelection}. Computer wins - ${computerSelection} beats ${playerSelection}`
+        // return ("computer");
     } else if (playerSelection === "rock" && computerSelection === "paper") {
-        return ("computer");
+        results.textContent = `Player picked ${playerSelection}. Computer picked ${computerSelection}. Computer wins - ${computerSelection} beats ${playerSelection}`
+        // return ("computer");
     } else if (playerSelection === "paper" && computerSelection === "paper") {
-        return ("tie");
+        results.textContent = `Tie - you both picked ${computerSelection}`;
+        // return ("tie");
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return ("player");
+        results.textContent = `Player picked ${playerSelection}. Computer picked ${computerSelection}. 
+        Player wins - ${playerSelection} beats ${computerSelection}`
+        // return ("player");
     } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return ("player");
+        results.textContent = `Player picked ${playerSelection}. Computer picked ${computerSelection}. 
+        Player wins - ${playerSelection} beats ${computerSelection}`
+        // return ("player");
     } else if (playerSelection === "paper" && computerSelection === "scissors") {
-        return ("computer");
+        results.textContent = `Player picked ${playerSelection}. Computer picked ${computerSelection}. Computer wins - ${computerSelection} beats ${playerSelection}`
+        // return ("computer");
     } else if (playerSelection === "scissors" && computerSelection === "scissors") {
-        return ("tie");
+        results.textContent = `Tie - you both picked ${computerSelection}`;
+        // return ("tie");
     }
+
+    container.appendChild(results);
 }
 
-function playGame() {
 
-    player = 0
-    computer = 0
-    tie = 0
+const buttons = document.querySelectorAll(".btn");
 
-    for (let i = 0; i < 5; i++) {
+buttons.forEach((button) => {
+    button.addEventListener("click", (button) => {
 
         computerSelection = getComputerChoice();
-        playerSelection = prompt("Choose your weapon: Rock, Paper or Scissors:").toLowerCase();
+        playerSelection = button.path[0].id;
 
         winner = playRound(playerSelection, computerSelection);
+        // console.log(button.path[0].id);
+    });
+});
 
-        if (winner === "computer") {
-            console.log(`Player picked ${playerSelection}. Computer picked ${computerSelection}. Computer wins - ${computerSelection} beats ${playerSelection}`);
-            computer++;
-            console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
-        } else if (winner === "player") {
-            console.log(`Player picked ${playerSelection}. Computer picked ${computerSelection}. Player wins - ${playerSelection} beats ${computerSelection}`);
-            player++;
-            console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
-        } else {
-            console.log(`Player picked ${playerSelection}.Computer picked ${computerSelection}.Tie - you both picked ${computerSelection}`);
-            tie++;
-            console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
-        }
 
-    }
+// if (winner === "computer") {
+//     console.log(`Player picked ${playerSelection}. Computer picked ${computerSelection}. Computer wins - ${computerSelection} beats ${playerSelection}`);
+//     computer++;
+//     console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
+// } else if (winner === "player") {
+//     console.log(`Player picked ${playerSelection}. Computer picked ${computerSelection}. Player wins - ${playerSelection} beats ${computerSelection}`);
+//     player++;
+//     console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
+// } else {
+//     console.log(`Player picked ${playerSelection}.Computer picked ${computerSelection}.Tie - you both picked ${computerSelection}`);
+//     tie++;
+//     console.log(`player score: ${player}, computer score: ${computer}, draws: ${tie}`);
+// }
 
-}
 
-playGame();
+
 
 
